@@ -1,19 +1,14 @@
 <template>
-    <div class="hello">
+    <div class="hello" @click="showMsg()">
         Hello {{name}}
     </div>
 </template>
 
 <script>
-export default {
-    data () {
-        return {
-            name: "Kitty"
-        } 
-    }
-}
+    import script from '../scripts/mainPage'
+    export default script
 </script>
 
 <style lang="sass" scoped>
-    @import "../sass/MainPage.sass"
+    @import "../sass/mainPage.sass"
 </style>
