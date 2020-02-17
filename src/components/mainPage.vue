@@ -1,6 +1,11 @@
 <template>
-    <div class="hello" @click="showMsg()">
-        Hello {{name}}
+    <div class="container">
+        <div class="page-block">
+            <div class="page" ref ="page" @click="getElement($event)">
+                Hello Kitty. How are you? And hello Bob!
+            </div>
+            <div class="clue" ref="clue" @click="hideClue()"></div>
+        </div>
     </div>
 </template>
 
