@@ -30,12 +30,36 @@ export default {
             if (event.target.tagName == "SPAN") {
                 let word = event.target.innerText
                 this.word = word.replace(/(\?|!|;|\.|,)/g,'')
-                this.translateWord()
-                this.showClue(event.layerX,event.layerY)
+                let translate = this.translateWord()
+                translate.then( () => {
+                    this.showClue(event.layerX,event.layerY)
+                }) 
+               // this.showClue(event.layerX,event.layerY)
             } 
         },
-        translateWord: function() {
-            this.word = this.dict[this.word.toLowerCase()]
+        translateWord: async function() {
+
+            let formData = new FormData()  // формируем объект для передачи RESTу
+            formData.append('name', this.word)
+             
+             
+                 let response = await fetch(`http://localhost:5000/rest`, {
+                     method: "POST",
+                     body: formData
+                 })
+                 .catch (error => {
+                     return error
+                 })   
+        
+                 if (response.ok) { // если HTTP-статус в диапазоне 200-299
+                    // получаем тело ответа (см. про этот метод ниже)
+                    let result = await response.text()
+                    this.word = result
+                  } else {
+                    alert("Ошибка HTTP: " + response.status)
+                  }
+                   
+            //this.word = this.dict[this.word.toLowerCase()]
 
         },
         showClue: function(x,y) {
