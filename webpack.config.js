@@ -19,6 +19,10 @@ module.exports = {
       loader: 'babel-loader',
       exclude: '/node_modules/',
     }, {
+      test: /\.(tsx|ts)$/,
+      loader: 'ts-loader',
+      exclude: /node_modules/,
+    }, {
       test: /\.vue$/,
       loader: 'vue-loader',
       options: {

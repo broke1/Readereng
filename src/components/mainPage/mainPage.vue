@@ -1,3 +1,4 @@
+
 <template>
   <div class="container">
     <div class="page-block">
@@ -17,9 +18,10 @@
   </div>
 </template>
 
-<script>
-import script from './mainPage.js'
+<script> 
+import script from './mainPage.ts'
 export default script
+
 </script>
 
 <style lang="sass" scoped>
